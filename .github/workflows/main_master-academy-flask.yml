@@ -73,4 +73,5 @@ jobs:
         with:
           app-name: 'master-academy-flask'
           slot-name: 'Production'
+          package: ./backend
           
