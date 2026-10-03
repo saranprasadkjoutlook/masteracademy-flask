@@ -12,7 +12,7 @@ python backend/run.py
 
 The API listens on `http://localhost:5000`. SQLite is used by default and the database file is created under `backend/instance/`. Demo accounts are `admin / admin35`, `student / student28`, and `student2 / student28`. Change the passwords and `SECRET_KEY` in environment settings before deploying.
 
-For Azure App Service, configure `DATABASE_URL`, `SECRET_KEY`, `ADMIN_PASSWORD`, `STUDENT_PASSWORD`, and `CORS_ORIGINS` as application settings. Install Microsoft ODBC Driver 18 on the host and set `DATABASE_URL` to a URL-encoded `mssql+pyodbc` connection string. A Gunicorn startup command from the repository root is:
+For Azure App Service, configure `DATABASE_URL`, `SECRET_KEY`, `ADMIN_PASSWORD`, `STUDENT_PASSWORD`, and `CORS_ORIGINS` as application settings. Set `CORS_ORIGINS` to the frontend's exact origin. If the frontend and backend are on different sites, also set `SESSION_COOKIE_SAMESITE=None` and `SESSION_COOKIE_SECURE=true` so the browser can send the session cookie. Install Microsoft ODBC Driver 18 on the host and set `DATABASE_URL` to a URL-encoded `mssql+pyodbc` connection string. A Gunicorn startup command from the repository root is:
 
 ```text
 gunicorn --chdir backend run:app
@@ -36,4 +36,4 @@ All endpoints return JSON. Sign in first; the API uses an HTTP-only session cook
 
 For non-text lessons, `content` must be a data URL with a matching image, audio, video, or PDF MIME type. Requests are limited to 3 MB. Configure `CORS_ORIGINS` to the exact frontend origin when the frontend and API use different hosts.
 
-The existing frontend currently keeps its course data in browser storage and does not call these endpoints. Its files were left unchanged as requested, so connect its existing actions to this API in a later frontend update to have admin changes persist on the server.
+Set the frontend API base URL in the `api-base-url` meta tag in `frontend/index.html`; it defaults to `http://localhost:5000/api` for local development. The frontend sends session cookies with API requests.

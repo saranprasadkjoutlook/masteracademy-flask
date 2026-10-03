@@ -95,7 +95,7 @@ button { cursor: pointer; }
 .admin-card-actions { display: grid; justify-items: end; gap: 7px; }
 .admin-card-actions .admin-select { max-width: 150px; font-size: 11px; padding: 8px; }
 .add-lesson-button { font-size: 11px; padding: 8px 10px; white-space: nowrap; }
-.lesson-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }.lesson-chip { background: #f5f4fb; border-radius: 6px; padding: 5px 8px; color: #77758d; font-size: 10px; }
+.lesson-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }.lesson-chip { border: 0; cursor: pointer; font-family: inherit; background: #f5f4fb; border-radius: 6px; padding: 5px 8px; color: #77758d; font-size: 10px; }
 .modal-backdrop { position: fixed; inset: 0; z-index: 10; display: grid; place-items: center; padding: 18px; background: rgba(34,31,63,.4); }
 .modal { width: min(100%, 480px); max-height: 90vh; overflow: auto; padding: 24px; background: white; border-radius: 17px; box-shadow: var(--shadow); }
 .modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }.modal-header h2 { font: 800 20px Manrope,sans-serif; margin: 0; }
